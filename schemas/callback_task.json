@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["uri", "payload"],
+  "properties": {
+    "uri": {"type": "string"},
+    "payload": {
+      "type": "object"
+      "oneOf": {
+        "$ref": "#/definitions/success",
+        "$ref": "#/definitions/fail"
+      },
+  },
+  "definitions": {
+    "success": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status"],
+      "properties": {
+        "id": {"type": "integer"},
+        "status": "SUCCESS"
+      }
+    },
+    "fail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "status_code"],
+      "properties": {
+        "id": {"type": "integer"},
+        "status": "FAIL",
+        "status_code": {"type": "integer"}
+      }
+    }
+  }
+}
