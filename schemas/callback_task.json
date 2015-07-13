@@ -9,8 +9,8 @@
       "oneOf": {
         "$ref": "#/definitions/success",
         "$ref": "#/definitions/fail"
-      },
-    },
+      }
+    }
   },
   "definitions": {
     "success": {
