@@ -6,12 +6,13 @@
     "uri": {"type": "string"},
     "payload": {
       "type": "object",
-      "oneOf": {
-        "$ref": "#/definitions/success",
-        "$ref": "#/definitions/fail"
-      }
+      "oneOf": [
+        { "$ref": "#/definitions/success" },
+        { "$ref": "#/definitions/fail" }
+      ]
     }
   },
+
   "definitions": {
     "success": {
       "type": "object",
@@ -19,7 +20,7 @@
       "required": ["id", "status"],
       "properties": {
         "id": {"type": "integer"},
-        "status": "SUCCESS"
+        "status": {"enum": ["SUCCESS"]}
       }
     },
     "fail": {
@@ -28,7 +29,7 @@
       "required": ["id", "status", "status_code"],
       "properties": {
         "id": {"type": "integer"},
-        "status": "FAIL",
+        "status": {"enum": ["FAIL"]},
         "status_code": {"type": "integer"}
       }
     }
