@@ -5,7 +5,7 @@
   "properties": {
     "uri": {"type": "string"},
     "payload": {
-      "type": "object"
+      "type": "object",
       "oneOf": {
         "$ref": "#/definitions/success",
         "$ref": "#/definitions/fail"
