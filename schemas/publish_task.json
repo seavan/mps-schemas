@@ -9,6 +9,7 @@
       "additionalProperties": false,
       "required": ["id", "type", "params"],
       "properties": {
+        "id": {"type": "integer"},
         "type": {"enum": ["VALIDATE"]},
         "params": {
           "type": "object",
