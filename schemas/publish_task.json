@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "oneOf": [
+    {"$ref": "#/definitions/validate"}
+  ],
+
+  "definitions": {
+    // validate message
+    "validate": {
+      "additionalProperties": false,
+      "required": ["id", "type", "params"],
+      "properties": {
+        "type": {"enum": ["VALIDATE"]},
+        "params": {
+          "type": "object",
+          "required": ["filename"],
+          "properties": {
+            "filename": {"type": "string"}
+          }
+        }
+      }
+    },
+    // transcode message
+    // upload_to message
+    // delete_from message
+  }
+}
