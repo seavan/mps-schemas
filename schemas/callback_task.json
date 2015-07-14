@@ -8,7 +8,8 @@
       "type": "object",
       "oneOf": [
         { "$ref": "#/definitions/success" },
-        { "$ref": "#/definitions/fail" }
+        { "$ref": "#/definitions/fail" },
+        { "$ref": "#/definitions/progress" }
       ]
     }
   },
@@ -17,20 +18,30 @@
     "success": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "status"],
+      "required": ["id", "type"],
       "properties": {
         "id": {"type": "integer"},
-        "status": {"enum": ["SUCCESS"]}
+        "type": {"enum": ["SUCCESS"]}
       }
     },
     "fail": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "status", "status_code"],
+      "required": ["id", "type", "error"],
       "properties": {
         "id": {"type": "integer"},
-        "status": {"enum": ["FAIL"]},
-        "status_code": {"type": "integer"}
+        "type": {"enum": ["FAIL"]},
+        "error": {"type": "integer"}
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "progress"],
+      "properties": {
+        "id": {"type": "integer"},
+        "type": {"enum": ["PROGRESS"]},
+        "progress": {"type": "integer"}
       }
     }
   }
