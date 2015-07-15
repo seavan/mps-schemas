@@ -19,6 +19,24 @@
           }
         }
       }
+    },
+    "transcode_av": {
+      "additionalProperties": false,
+      "required": ["id", "type", "params"],
+      "properties": {
+        "id": {"type": "integer"},
+        "type": {"enum": ["TRANSCODE_AV"]},
+        "params": {
+          "type": "object",
+          "required": ["input_audio", "input_picture", "output_video"],
+          "properties": {
+            "input_audio": {"type": "string"},
+            "input_picture": {"type": "string"},
+            "output_video": {"type": "string"}
+          }
+        }
+      }
     }
+
   }
 }
