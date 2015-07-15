@@ -1,7 +1,8 @@
 {
   "type": "object",
   "oneOf": [
-    {"$ref": "#/definitions/validate"}
+    {"$ref": "#/definitions/validate"},
+    {"$ref": "#/definitions/transcode_av"}
   ],
 
   "definitions": {
