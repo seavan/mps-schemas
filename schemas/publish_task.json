@@ -8,9 +8,10 @@
   "definitions": {
     "validate": {
       "additionalProperties": false,
-      "required": ["id", "type", "params"],
+      "required": ["id", "type", "params", "callback_uri"],
       "properties": {
         "id": {"type": "integer"},
+        "callback_uri": {"type": "integer"},
         "type": {"enum": ["VALIDATE"]},
         "params": {
           "type": "object",
@@ -23,9 +24,10 @@
     },
     "transcode_av": {
       "additionalProperties": false,
-      "required": ["id", "type", "params"],
+      "required": ["id", "type", "params", "callback_uri"],
       "properties": {
         "id": {"type": "integer"},
+        "callback_uri": {"type": "integer"},
         "type": {"enum": ["TRANSCODE_AV"]},
         "params": {
           "type": "object",
