@@ -10,7 +10,7 @@
       "additionalProperties": false,
       "required": ["id", "type", "params", "callback_uri"],
       "properties": {
-        "id": {"type": "integer"},
+        "id": {"type": "string"},
         "callback_uri": {"type": "integer"},
         "type": {"enum": ["VALIDATE"]},
         "params": {
@@ -27,7 +27,7 @@
       "required": ["id", "type", "params", "callback_uri"],
       "properties": {
         "id": {"type": "integer"},
-        "callback_uri": {"type": "integer"},
+        "callback_uri": {"type": "string"},
         "type": {"enum": ["TRANSCODE_AV"]},
         "params": {
           "type": "object",
