@@ -1,27 +1,10 @@
 {
   "type": "object",
   "oneOf": [
-    {"$ref": "#/definitions/validate"},
     {"$ref": "#/definitions/transcode_av"}
   ],
 
   "definitions": {
-    "validate": {
-      "additionalProperties": false,
-      "required": ["id", "type", "params", "callback_uri"],
-      "properties": {
-        "id": {"type": "string"},
-        "callback_uri": {"type": "integer"},
-        "type": {"enum": ["VALIDATE"]},
-        "params": {
-          "type": "object",
-          "required": ["filename"],
-          "properties": {
-            "filename": {"type": "string"}
-          }
-        }
-      }
-    },
     "transcode_av": {
       "additionalProperties": false,
       "required": ["id", "type", "params", "callback_uri"],
