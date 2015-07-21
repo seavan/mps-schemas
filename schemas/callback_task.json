@@ -1,47 +1,55 @@
 {
   "type": "object",
-  "additionalProperties": false,
-  "required": ["uri", "payload"],
-  "properties": {
-    "uri": {"type": "string"},
-    "payload": {
-      "type": "object",
-      "oneOf": [
-        { "$ref": "#/definitions/success" },
-        { "$ref": "#/definitions/fail" },
-        { "$ref": "#/definitions/progress" }
-      ]
-    }
-  },
+  "oneOf": [
+    {"$ref": "#/definitions/success"},
+    {"$ref": "#/definitions/fail"},
+    {"$ref": "#/definitions/progress"}
+  ],
 
   "definitions": {
-    "success": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "type"],
-      "properties": {
-        "id": {"type": "integer"},
-        "type": {"enum": ["SUCCESS"]}
-      }
-    },
-    "fail": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "type", "error"],
-      "properties": {
-        "id": {"type": "integer"},
-        "type": {"enum": ["FAIL"]},
-        "error": {"type": "integer"}
-      }
-    },
     "progress": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "type", "progress"],
+      "additionalProperties": "false",
+      "required": ["id", "type", "callback_uri", "params"],
       "properties": {
         "id": {"type": "integer"},
+        "callback_uri": {"type": "string"},
         "type": {"enum": ["PROGRESS"]},
-        "progress": {"type": "integer"}
+        "params": {
+          "type": "object",
+          "additionalProperties": "false",
+          "required": ["progress"],
+          "properties": {
+            "progress": {"type": "integer"}
+          }
+        }
+      }
+    },
+
+    "success": {
+      "additionalProperties": "false",
+      "required": ["id", "type", "callback_uri", "params"],
+      "properties": {
+        "id": {"type": "integer"},
+        "callback_uri": {"type": "string"},
+        "type": {"enum": ["SUCCESS"]},
+        "params": {
+          "additionalProperties": "false",
+          "type": "object"
+        }
+      }
+    },
+
+    "fail": {
+      "additionalProperties": "false",
+      "required": ["id", "type", "callback_uri", "params"],
+      "properties": {
+        "id": {"type": "integer"},
+        "callback_uri": {"type": "string"},
+        "type": {"enum": ["FAIL"]},
+        "params": {
+          "additionalProperties": "false",
+          "type": "object"
+        }
       }
     }
   }
