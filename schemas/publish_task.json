@@ -1,6 +1,7 @@
 {
   "type": "object",
   "oneOf": [
+    {"$ref": "#/definitions/transcode_a"},
     {"$ref": "#/definitions/transcode_av"}
   ],
 
@@ -22,7 +23,23 @@
           }
         }
       }
+    },
+    "transcode_a": {
+      "additionalProperties": false,
+      "required": ["id", "type", "params", "callback_uri"],
+      "properties": {
+        "id": {"type": "integer"},
+        "callback_uri": {"type": "string"},
+        "type": {"enum": ["TRANSCODE_A"]},
+        "params": {
+          "type": "object",
+          "required": ["input_audio", "output_audio"],
+          "properties": {
+            "input_audio": {"type": "string"},
+            "output_audio": {"type": "string"}
+          }
+        }
+      }
     }
-
   }
 }
