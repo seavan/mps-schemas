@@ -3,7 +3,8 @@
   "oneOf": [
     {"$ref": "#/definitions/success"},
     {"$ref": "#/definitions/fail"},
-    {"$ref": "#/definitions/progress"}
+    {"$ref": "#/definitions/progress"},
+    {"$ref": "#/definitions/metadata"}
   ],
 
   "definitions": {
@@ -25,6 +26,26 @@
       }
     },
 
+    "metadata": {
+      "additionalProperties": "false",
+      "required": ["id", "type", "callback_uri", "params"],
+      "properties": {
+        "id": {"type": "integer"},
+        "callback_uri": {"type": "string"},
+        "type": {"enum": "PARSED_MP3"},
+        "params": {
+          "type": "object",
+          "additionalProperties": "false",
+          "required": ["album", "artist", "title"],
+          "properties": {
+            "album": {"type": "string"},
+            "artist": {"type": "string"},
+            "title": {"type": "string"}
+          }
+        }
+      }
+    },
+
     "success": {
       "additionalProperties": "false",
       "required": ["id", "type", "callback_uri", "params"],
@@ -33,7 +54,6 @@
         "callback_uri": {"type": "string"},
         "type": {"enum": ["SUCCESS"]},
         "params": {
-          "additionalProperties": "false",
           "type": "object"
         }
       }
@@ -48,7 +68,12 @@
         "type": {"enum": ["FAIL"]},
         "params": {
           "additionalProperties": "false",
-          "type": "object"
+          "type": "object",
+          "required": ["code", "message"],
+          "properties": {,
+            "code": {"type": "integer"},
+            "message": {"type": "string"}
+          }
         }
       }
     }
