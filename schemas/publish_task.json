@@ -2,7 +2,8 @@
   "type": "object",
   "oneOf": [
     {"$ref": "#/definitions/transcode_a"},
-    {"$ref": "#/definitions/transcode_av"}
+    {"$ref": "#/definitions/transcode_av"},
+    {"$ref": "#/definitions/parse_metadata"}
   ],
 
   "definitions": {
@@ -24,6 +25,7 @@
         }
       }
     },
+
     "transcode_a": {
       "additionalProperties": false,
       "required": ["id", "type", "params", "callback_uri"],
@@ -37,6 +39,23 @@
           "properties": {
             "input_audio": {"type": "string"},
             "output_audio": {"type": "string"}
+          }
+        }
+      }
+    },
+
+    "parse_metadata": {
+      "additionalProperties": false,
+      "required": ["id", "type", "params", "callback_uri"],
+      "properties": {
+        "id": {"type": "integer"},
+        "callback_uri": {"type": "string"},
+        "type": {"enum": ["PARSE_METADATA"]},
+        "params": {
+          "type": "object",
+          "required": ["input_audio"],
+          "properties": {
+            "input_audio": {"type": "string"}
           }
         }
       }
