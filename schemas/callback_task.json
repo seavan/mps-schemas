@@ -3,8 +3,7 @@
   "oneOf": [
     {"$ref": "#/definitions/success"},
     {"$ref": "#/definitions/fail"},
-    {"$ref": "#/definitions/progress"},
-    {"$ref": "#/definitions/metadata"}
+    {"$ref": "#/definitions/progress"}
   ],
 
   "definitions": {
@@ -21,26 +20,6 @@
           "required": ["progress"],
           "properties": {
             "progress": {"type": "integer"}
-          }
-        }
-      }
-    },
-
-    "metadata": {
-      "additionalProperties": "false",
-      "required": ["id", "type", "callback_uri", "params"],
-      "properties": {
-        "id": {"type": "integer"},
-        "callback_uri": {"type": "string"},
-        "type": {"enum": "PARSED_MP3"},
-        "params": {
-          "type": "object",
-          "additionalProperties": "false",
-          "required": ["album", "artist", "title"],
-          "properties": {
-            "album": {"type": "string"},
-            "artist": {"type": "string"},
-            "title": {"type": "string"}
           }
         }
       }
