@@ -3,7 +3,9 @@
   "oneOf": [
     {"$ref": "#/definitions/transcode_a"},
     {"$ref": "#/definitions/transcode_av"},
-    {"$ref": "#/definitions/parse_metadata"}
+    {"$ref": "#/definitions/parse_metadata"},
+    {"$ref": "#/definitions/delete"},
+    {"$ref": "#/definitions/upload"}
   ],
 
   "definitions": {
@@ -57,6 +59,68 @@
           "properties": {
             "input_audio": {"type": "string"}
           }
+        }
+      }
+    },
+
+    "upload": {
+      "additionalProperties": false,
+      "required": ["id", "type", "params", "callback_uri"],
+      "properties": {
+        "id": {"type": "integer"},
+        "callback_uri": {"type": "string"},
+        "type": {"enum": ["UPLOAD"]},
+        "params": {
+          "type": "object",
+          "oneOf": [
+            {"$ref": "#/definitions/upload_params/youtube"}
+          ]
+        }
+      }
+    },
+    "upload_params": {
+      "youtube": {
+        "additionalProperties": false,
+        "required": ["service", "filename", "description", "category", "keywords"],
+        "properties": {
+          "service": {"enum": ["youtube"]},
+          "filename": {"type": "string"},
+          "description": {"type": "string"},
+          "category": {"type": "string"},
+          "keywords": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+
+    "delete": {
+      "additionalProperties": false,
+      "required": ["id", "type", "params", "callback_uri"],
+      "properties": {
+        "id": {"type": "integer"},
+        "callback_uri": {"type": "string"},
+        "type": {"enum": ["DELETE"]},
+        "params": {
+          "type": "object",
+          "oneOf": [
+            {"$ref": "#/definitions/delete_params/youtube"}
+          ]
+        }
+      }
+    },
+    "delete_params": {
+      "youtube": {
+        "additionalProperties": false,
+        "required": ["service", "video_id"],
+        "properties": {
+          "service": {"enum": ["youtube"]},
+          "video_id": {"type": "string"}
         }
       }
     }
