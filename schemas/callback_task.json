@@ -8,7 +8,7 @@
 
   "definitions": {
     "progress": {
-      "additionalProperties": "false",
+      "additionalProperties": false,
       "required": ["id", "type", "callback_uri", "params"],
       "properties": {
         "id": {"type": "integer"},
@@ -16,7 +16,7 @@
         "type": {"enum": ["PROGRESS"]},
         "params": {
           "type": "object",
-          "additionalProperties": "false",
+          "additionalProperties": false,
           "required": ["progress"],
           "properties": {
             "progress": {"type": "integer"}
@@ -26,7 +26,7 @@
     },
 
     "success": {
-      "additionalProperties": "false",
+      "additionalProperties": false,
       "required": ["id", "type", "callback_uri", "params"],
       "properties": {
         "id": {"type": "integer"},
@@ -39,17 +39,17 @@
     },
 
     "fail": {
-      "additionalProperties": "false",
+      "additionalProperties": false,
       "required": ["id", "type", "callback_uri", "params"],
       "properties": {
         "id": {"type": "integer"},
         "callback_uri": {"type": "string"},
         "type": {"enum": ["FAIL"]},
         "params": {
-          "additionalProperties": "false",
+          "additionalProperties": false,
           "type": "object",
           "required": ["code", "message"],
-          "properties": {,
+          "properties": {
             "code": {"type": "integer"},
             "message": {"type": "string"}
           }
