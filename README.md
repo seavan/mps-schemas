@@ -1,4 +1,4 @@
-**Опиание схем:**
+**Schemas** - репозиторий со схемами валидации сообщений взаимодействия между
+  сервисами. Предполагается подключать как submodule к необходимым компонентам.
 
-* **callback_task** - схема для ообщения Celery Tasks и Ouroboros
-* **publish_task** - схема для общения Сайта и Cerberus
+Основная документация: https://github.com/seavan/mps-main/wiki/Component:-Schemas
