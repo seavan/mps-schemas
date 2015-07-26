@@ -81,10 +81,11 @@
     "upload_params": {
       "youtube": {
         "additionalProperties": false,
-        "required": ["service", "input_video", "description", "category", "keywords"],
+        "required": ["service", "input_video", "title", "description", "category", "keywords"],
         "properties": {
           "service": {"enum": ["youtube"]},
           "input_video": {"type": "string"},
+          "title": {"type": "string"},
           "description": {"type": "string"},
           "category": {"type": "string"},
           "keywords": {
