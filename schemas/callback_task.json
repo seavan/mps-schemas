@@ -33,7 +33,50 @@
         "callback_uri": {"type": "string"},
         "type": {"enum": ["SUCCESS"]},
         "params": {
-          "type": "object"
+          "type": "object",
+          "oneOf": [
+            {"$ref": "#/definitions/success_params/parse_metadata"},
+            {"$ref": "#/definitions/success_params/transcode_av"},
+            {"$ref": "#/definitions/success_params/transcode_a"},
+            {"$ref": "#/definitions/success_params/upload"},
+            {"$ref": "#/definitions/success_params/delete"}
+          ]
+        }
+      }
+    },
+    "success_params": {
+      "parse_metadata": {
+        "additionalProperties": false,
+        "required": ["album", "artist", "title"],
+        "properties": {
+          "album": {"type": "string"},
+          "artist": {"type": "string"},
+          "title": {"type": "string"}
+        }
+      },
+      "transcode_av": {
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+        }
+      },
+      "transcode_a": {
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+        }
+      },
+      "upload": {
+        "additionalProperties": false,
+        "required": ["video_id"],
+        "properties": {
+          "video_id": {"type": "string"}
+        }
+      },
+      "delete": {
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
         }
       }
     },
