@@ -56,15 +56,11 @@
       },
       "transcode_av": {
         "additionalProperties": false,
-        "required": [],
-        "properties": {
-        }
+        "properties": {}
       },
       "transcode_a": {
         "additionalProperties": false,
-        "required": [],
-        "properties": {
-        }
+        "properties": {}
       },
       "upload": {
         "additionalProperties": false,
@@ -75,9 +71,7 @@
       },
       "delete": {
         "additionalProperties": false,
-        "required": [],
-        "properties": {
-        }
+        "properties": {}
       }
     },
 
