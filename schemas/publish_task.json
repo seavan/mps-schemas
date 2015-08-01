@@ -97,7 +97,16 @@
             "uniqueItems": true
           }
         }
-      }
+      },
+      "promodj": {
+        "additionalProperties": false,
+        "required": ["service", "input_audio", "title", "description", "category", "keywords"],
+        "properties": {
+          "service": {"enum": ["promodj"]},
+          "input_audio": {"type": "string"},
+          "title": {"type": "string"}         
+        }
+      }	  
     },
 
     "delete": {
@@ -123,7 +132,15 @@
           "service": {"enum": ["youtube"]},
           "video_id": {"type": "string"}
         }
-      }
+      },
+      "promodj": {
+        "additionalProperties": false,
+        "required": ["service", "video_id"],
+        "properties": {
+          "service": {"enum": ["promodj"]},
+          "video_id": {"type": "string"}
+        }
+      }	  
     }
   }
 }
