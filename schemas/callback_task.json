@@ -36,8 +36,6 @@
           "type": "object",
           "oneOf": [
             {"$ref": "#/definitions/success_params/parse_metadata"},
-            {"$ref": "#/definitions/success_params/transcode_av"},
-            {"$ref": "#/definitions/success_params/transcode_a"},
             {"$ref": "#/definitions/success_params/upload"},
             {"$ref": "#/definitions/success_params/delete"}
           ]
