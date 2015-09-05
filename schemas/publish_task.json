@@ -73,7 +73,8 @@
         "params": {
           "type": "object",
           "oneOf": [
-            {"$ref": "#/definitions/upload_params/youtube"}
+            {"$ref": "#/definitions/upload_params/youtube"},
+            {"$ref": "#/definitions/upload_params/soundcloud"}
           ]
         }
       }
@@ -81,10 +82,10 @@
     "upload_params": {
       "youtube": {
         "additionalProperties": false,
-        "required": ["service", "input_video", "title", "description", "category", "keywords"],
+        "required": ["service", "input_file", "title", "description", "category", "keywords"],
         "properties": {
           "service": {"enum": ["youtube"]},
-          "input_video": {"type": "string"},
+          "input_file": {"type": "string"},
           "title": {"type": "string"},
           "description": {"type": "string"},
           "category": {"type": "string"},
@@ -98,15 +99,15 @@
           }
         }
       },
-      "promodj": {
+      "soundcloud": {
         "additionalProperties": false,
-        "required": ["service", "input_audio", "title", "description", "category", "keywords"],
+        "required": ["service", "input_file", "title"],
         "properties": {
-          "service": {"enum": ["promodj"]},
-          "input_audio": {"type": "string"},
-          "title": {"type": "string"}         
+          "service": {"enum": ["soundcloud"]},
+          "input_file": {"type": "string"},
+          "title": {"type": "string"}
         }
-      }	  
+      }
     },
 
     "delete": {
@@ -119,7 +120,8 @@
         "params": {
           "type": "object",
           "oneOf": [
-            {"$ref": "#/definitions/delete_params/youtube"}
+            {"$ref": "#/definitions/delete_params/youtube"},
+            {"$ref": "#/definitions/delete_params/soundcloud"}
           ]
         }
       }
@@ -133,14 +135,14 @@
           "video_id": {"type": "string"}
         }
       },
-      "promodj": {
+      "soundcloud": {
         "additionalProperties": false,
-        "required": ["service", "video_id"],
+        "required": ["service", "track_id"],
         "properties": {
-          "service": {"enum": ["promodj"]},
-          "video_id": {"type": "string"}
+          "service": {"enum": ["soundcloud"]},
+          "track_id": {"type": "string"}
         }
-      }	  
+      }
     }
   }
 }

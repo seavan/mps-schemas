@@ -35,14 +35,19 @@
         "params": {
           "type": "object",
           "oneOf": [
+            {"$ref": "#/definitions/success_params/generic"},
             {"$ref": "#/definitions/success_params/parse_metadata"},
-            {"$ref": "#/definitions/success_params/upload"},
-            {"$ref": "#/definitions/success_params/delete"}
+            {"$ref": "#/definitions/success_params/upload_youtube"},
+            {"$ref": "#/definitions/success_params/upload_soundcloud"}
           ]
         }
       }
     },
     "success_params": {
+      "generic": {
+        "additionalProperties": false,
+        "properties": {}
+      },
       "parse_metadata": {
         "additionalProperties": false,
         "required": ["album", "artist", "title"],
@@ -52,24 +57,19 @@
           "title": {"type": "string"}
         }
       },
-      "transcode_av": {
-        "additionalProperties": false,
-        "properties": {}
-      },
-      "transcode_a": {
-        "additionalProperties": false,
-        "properties": {}
-      },
-      "upload": {
+      "upload_youtube": {
         "additionalProperties": false,
         "required": ["video_id"],
         "properties": {
           "video_id": {"type": "string"}
         }
       },
-      "delete": {
+      "upload_soundcloud": {
         "additionalProperties": false,
-        "properties": {}
+        "required": ["track_id"],
+        "properties": {
+          "track_id": {"type": "integer"}
+        }
       }
     },
 
